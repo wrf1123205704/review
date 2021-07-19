@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双飞翼布局详解</title>
+    <style type="text/css">
+       *{
+	 		margin:0;
+	 		padding: 0;
+	 	}
+        .main{
+            height: 50vh;
+        }
+	 	.main > div {
+            height: 100%;
+	 	}
+	 	.left {
+            float: left;
+	 		width: 20vw;
+	 		background: red;
+	 		margin-left: -100%;
+	 	}
+	 	.right{
+            float: left;
+	 		width: 20vw;
+	 		background: blue;
+	 		margin-left: -20vw;
+	 	}
+	 	.middle{
+            float: left;
+	 		width: 100%;
+	 		background: yellow;
+	 	}
+	 	.content{
+	 		margin-left: 20vw;
+	 		margin-right: 20vw;
+	 	}
+    </style>
+</head>
+<body>
+    <div>
+        <h3>个人理解：</h3>
+        双飞翼布局就是 将左右盒子以<b>float布局+margin</b>的方式向左右浮动，类似张开双翼一样，内容区域设置内外两个盒子，外部盒子设置100%宽度撑开区域，内部盒子设置通过左右margin来预留出左右盒子的区域
+
+        <h3>详细介绍：</h3>
+        1、外层盒子设置高度
+        <br />
+        2、内部三栏盒子浮动
+        <br />
+        3、设置左部盒子的宽度 --> 设置 左边距 为 “-100%”（将盒子怼到上一行的左边）
+        <br />
+        4、设置右部盒子的宽度 --> 设置 左边距 为 “-宽度”（将盒子怼到上一行的右边）
+        <br />
+        5、设置中间盒子的宽度为 “100%”
+        <br />
+        6、设置中间盒子内部的内容区域的盒子 左右边距为左右盒子的宽度
+    </div>
+    <div class="main">
+		<div class="middle">
+	 		<div class="content">
+	 		    中间
+		 	</div>
+		 </div>
+		<div class="left">
+			左边
+		</div>
+		<div class="right">
+			右边
+		</div>
+	</div>
+</body>
+</html>

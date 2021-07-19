@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型和原型链</title>
+    <script src="../../../untils/appentCode.js"></script>
+</head>
+<body>
+    <h4>构造函数创建对象:</h4>
+    <pre>
+        <code>
+            // 定义构造函数，
+            function Persion() {
+                
+            }
+            var persion = new Persion();
+            persion.name = "ruofeng";
+            console.log(Persion, persion);
+        </code>
+    </pre>
+    此时Persion就是一个构造函数，我们用new创建了一个对象实例persion此时Persion就是一个构造函数，我们用new创建了一个对象实例persion
+    
+    <h4>prototype</h4>
+    每个函数都有一个 prototype 属性，每一个JavaScript对象(null除外)在创建的时候就会与之关联另一个对象，这个对象就是我们所说的原型，每一个对象都会从原型"继承"属性。
+    <pre>
+        <code>
+            function Person() {
+
+            }
+            // 虽然写在注释里，但是你要注意：
+            // prototype是函数才会有的属性
+            Person.prototype.name = 'Kevin';
+            var person1 = new Person();
+            var person2 = new Person();
+            console.log(person1.name) // Kevin
+            console.log(person2.name) // Kevin
+        </code>
+    </pre>
+    <img src="./images/img1.png" alt="">
+
+    <h4>proto</h4>
+    每一个JavaScript对象(除了 null )都具有的一个属性，叫proto，这个属性会指向该对象的原型
+    <pre>
+        <code>
+            function Person() {
+
+            }
+            var person = new Person();
+            console.log(person.__proto__ === Person.prototype); // true
+        </code>
+    </pre>
+    <img src="./images/img2.png" alt="">
+
+    <h4>constructor</h4>
+    每个 <b>原型</b> 都有一个 constructor 属性指向关联的构造函数 实例原型指向构造函数
+    <pre>
+        <code>
+            function Person() {
+
+            }
+            console.log(Person === Person.prototype.constructor); // true
+        </code>
+    </pre>
+    <img src="./images/img3.png" alt="">
+    <pre>
+        <code>
+            function Person() {
+
+            }
+            
+            var person = new Person();
+            
+            console.log(person.__proto__ == Person.prototype) // true
+            console.log(Person.prototype.constructor == Person) // true
+            // 顺便学习一个ES5的方法,可以获得对象的原型
+            console.log(Object.getPrototypeOf(person) === Person.prototype) // true
+        </code>
+    </pre>
+
+    <h4>实例与原型</h4>
+    <pre>
+        <code>
+            与原型
+            function Person() {
+
+            }
+
+            Person.prototype.name = 'Kevin';
+
+            var person = new Person();
+
+            person.name = 'Daisy';
+            console.log(person.name) // Daisy
+
+            delete person.name;
+            console.log(person.name) // Kevin
+        </code>
+    </pre>
+    在这个例子中，我们给实例对象 person 添加了 name 属性，当我们打印 person.name 的时候，结果自然为 Daisy。
+
+    但是当我们删除了 person 的 name 属性时，读取 person.name，从 person 对象中找不到 name 属性就会从 person 的原型也就是 person.proto ，也就是 Person.prototype中查找，幸运的是我们找到了 name 属性，结果为 Kevin。
+
+    <h4>原型与原型</h4>
+    <pre>
+        <code>
+            var obj = new Object();
+            obj.name = 'Kevin'
+            console.log(obj.name) // Kevin
+        </code>
+    </pre>
+    <img src="./images/img4.png" alt="">
+
+    <h4>原型链</h4>
+    <pre>
+        <code>
+            console.log(Object.prototype.__proto__ === null) // true
+        </code>
+    </pre>
+    <img src="./images/img5.png" alt="">
+    <br />
+    JavaScript 默认并不会复制对象的属性，相反，JavaScript 只是在两个对象之间创建一个关联，这样，一个对象就可以通过委托访问另一个对象的属性和函数，所以与其叫继承，委托的说法反而更准确些
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣杯布局详解</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .box{
+            margin: 3rem 0 ;
+            padding: 0 20vw;/* 留出左右的距离*/
+            height: 50vh;
+        }
+        .box > div{
+            float: left;
+            height: 100%;
+            line-height: 50vh;
+            text-align: center;
+        }
+        .box .middle {
+            width: 100%;
+            background-color: yellow;
+        }
+        .box .left {
+            width: 20vw;
+            margin-left: -100%;
+            background-color: red;
+            position: relative;
+            left: -20vw;/*往左拉*/
+        }
+        .box .right {
+            width: 20vw;
+            margin-left: -20vw;
+            background-color: green;
+            position: relative;
+            right: -20vw;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>个人理解</h3>
+        圣杯布局比较依赖外层盒子，有外层盒子内部的区域都依赖外部盒子的挤压，像是杯子一样。先由外层盒子设置<b>左右内边距</b>来预留出左右盒子的位置，中间内容区域设置100%宽度来撑开内容区域，左右盒子再用<b>float布局+margin</b>的方式移动到和中间内容区域一行，再通过<b>relative</b>设置自己的具体位置
+        <h3>详细介绍：</h3>
+        1、外层盒子设置高度，设置左右padding留出左右区域的位置
+        <br />
+        2、内部三栏盒子浮动
+        <br />
+        3、中部盒子设置宽度为100%
+        <br />
+        4、左边盒子设置外层盒子为左部盒子预留的padding一致的宽度  --> 设置左边距为 “-100%”（将左部盒子怼到上一行左边） --> 设置定位 relative  -->  left属性为 “-宽度”（往左拉盒子）
+        <br />
+        5、右边盒子设置外层盒子为右部盒子预留的padding一致的宽度  --> 设置左边距为 “-宽度”（将右部盒子怼到上一行右边） --> 设置定位 relative  --> right 属性为 “-宽度”（往右拉盒子）
+    </div>
+    <div class="box">
+        <!--注意顺序-->
+        <div class="middle">middle</div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+</body>
+</html>
