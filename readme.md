@@ -8,9 +8,15 @@
 
 # 章节目录
 
-## HTML   ### 一些HTML标签中我常用的标签和布局的总结
-## JavaScript  ### JavaScript的一些常用语法的总结，包括ES6及以上
-## Vue   ###  前端Vue框架的学习和总结
-## weChat  ### 微信小程序的学习和总结
-## React  ### 前端React框架的学习和总结
-## untils  ### 自己封装的一些方法
+## HTML  
+###     一些HTML标签中我常用的标签和布局的总结
+## JavaScript  
+###     JavaScript的一些常用语法的总结，包括ES6及以上
+## Vue  
+###     前端Vue框架的学习和总结
+## weChat  
+###     微信小程序的学习和总结
+## React  
+###     前端React框架的学习和总结
+## untils  
+###     自己封装的一些方法
